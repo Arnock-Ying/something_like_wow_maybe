@@ -147,12 +147,17 @@
     <ClCompile Include="City_small.cpp" />
     <ClCompile Include="CityMap.cpp" />
     <ClCompile Include="CityMap_list.cpp" />
+    <ClCompile Include="dragon.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="gameObject.cpp" />
     <ClCompile Include="Headquarters.cpp" />
     <ClCompile Include="faction.cpp" />
+    <ClCompile Include="iceman.cpp" />
+    <ClCompile Include="lion.cpp" />
+    <ClCompile Include="ninja.cpp" />
     <ClCompile Include="nomelWarrior.cpp" />
     <ClCompile Include="Sword.cpp" />
+    <ClCompile Include="wolf.cpp" />
     <ClCompile Include="源.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,17 +169,24 @@
     <ClInclude Include="City_small.h" />
     <ClInclude Include="CityMap.h" />
     <ClInclude Include="CityMap_list.h" />
+    <ClInclude Include="dragon.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="gameObject.h" />
     <ClInclude Include="Headquarters.h" />
+    <ClInclude Include="iceman.h" />
+    <ClInclude Include="lion.h" />
+    <ClInclude Include="ninja.h" />
     <ClInclude Include="nomelWarrior.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="faction.h" />
     <ClInclude Include="Sword.h" />
+    <ClInclude Include="Warriors.h" />
+    <ClInclude Include="wolf.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="项目文件\wow大作业类设计.xlsx" />
     <None Include="项目文件\wow大作业需求.docx" />
+    <None Include="项目文件\大作业文档.docx" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="大作业wow.rc" />

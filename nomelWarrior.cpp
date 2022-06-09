@@ -1,13 +1,12 @@
 #include "nomelWarrior.h"
 #include "Headquarters.h"
 
-int nomelWarrior::defaultHealth = 20;
-int nomelWarrior::defaultAttack = 9;
+int nomelWarrior::defaultHealth = 114;
+int nomelWarrior::defaultAttack = 514;
 
 baseWarrior* nomelWarrior::factionWar()
 {
 	baseWarrior* war = new nomelWarrior();
-	war->name = "nomel";
 	return war;
 }
 

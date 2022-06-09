@@ -75,6 +75,21 @@
     <ClCompile Include="Arch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="dragon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ninja.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="iceman.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lion.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="wolf.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -113,14 +128,32 @@
     <ClInclude Include="nomelWarrior.h">
       <Filter>头文件\Warrior</Filter>
     </ClInclude>
-    <ClInclude Include="gameObject.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Sword.h">
       <Filter>头文件\Arms</Filter>
     </ClInclude>
     <ClInclude Include="Arch.h">
       <Filter>头文件\Arms\Missile</Filter>
+    </ClInclude>
+    <ClInclude Include="dragon.h">
+      <Filter>头文件\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="ninja.h">
+      <Filter>头文件\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="iceman.h">
+      <Filter>头文件\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="gameObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lion.h">
+      <Filter>头文件\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="wolf.h">
+      <Filter>头文件\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="Warriors.h">
+      <Filter>头文件\Warrior</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +161,9 @@
       <Filter>资源文件</Filter>
     </None>
     <None Include="项目文件\wow大作业类设计.xlsx">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="项目文件\大作业文档.docx">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>

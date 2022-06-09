@@ -69,6 +69,7 @@ void GameManager::gameRun()
 			break;
 		GameObject::Clear();
 		itr++;
+		debug.Log("\n");
 	}
 }
 

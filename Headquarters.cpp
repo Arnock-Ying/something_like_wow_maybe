@@ -28,7 +28,7 @@ baseWarrior* Headquarters::enterWarrior(baseWarrior* war)
 		++enterEntity;
 	if (enterEntity >= GameManager::headerMaxHealth)
 	{
-		Log("has takend!");
+		Log("has takend!!!!!!!!\n--------------------");
 		SetAction(false);
 	}
 	return war;

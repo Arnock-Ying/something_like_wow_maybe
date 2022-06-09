@@ -272,7 +272,7 @@ bool baseWarrior::_addArms(baseArms* a)
 
 void baseWarrior::_beShoot(baseMissile* m)//TODO->
 {
-	Log("be shoot by " + m->name + " from " + m->fireWarrior->name);
+	Log("be shoot by " + m->name + " from " + m->Holder->name);
 	m->OnHart(this);
 	OnBeShoot(m);
 }

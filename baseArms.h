@@ -15,7 +15,7 @@ public:
 protected:
 	int power = 0;
 public:
-	baseWarrior* fireWarrior;
+	baseWarrior* Holder;
 	baseArms() = default;
 
 	/// <summary>

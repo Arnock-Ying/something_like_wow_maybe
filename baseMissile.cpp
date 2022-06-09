@@ -4,19 +4,19 @@
 
 basePlace* baseMissile::getHurtCity()
 {
-	return fireWarrior->getNextCity();
+	return Holder->getNextCity();
 }
 
 void baseMissile::_fire()
 {
-	hurtPlace = this->fireWarrior->getNextCity();
-	if (!hurtPlace->getOccupier() == fireWarrior->getCamp())
+	hurtPlace = this->Holder->getNextCity();
+	if (!hurtPlace->getOccupier() == Holder->getCamp())
 	{
 		for (auto i : hurtPlace->Warriors())
 		{
 			if (i != nullptr)
 				if (i->Action())
-					if (i->getCamp() != fireWarrior->getCamp())
+					if (i->getCamp() != Holder->getCamp())
 					{
 						i->_getHart(power, false);
 						i->_beShoot(this);

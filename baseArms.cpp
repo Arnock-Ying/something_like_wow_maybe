@@ -4,7 +4,7 @@
 baseArms* baseArms::_factionArm(baseWarrior* w)
 {
 	baseArms* arm = FactionArm();
-	arm->fireWarrior = w;
+	arm->Holder = w;
 	if (!w->_addArms(arm))
 	{
 		delete arm;

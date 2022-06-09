@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Place">
+      <UniqueIdentifier>{8c094f48-8979-44ac-adcc-89ae968a5cac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Warrior">
+      <UniqueIdentifier>{3b4181b3-9708-4ec7-b76c-6ec424d24c02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Arms">
+      <UniqueIdentifier>{0954e80f-2b9b-44fd-8361-a7b3e05706e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Arms\Missile">
+      <UniqueIdentifier>{bab6195b-8b51-49ff-b199-012bbb38ffaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\CityMap">
+      <UniqueIdentifier>{f9185e2a-23cc-4c11-956f-0f3a8409103f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="源.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CityMap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="basePlace.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Headquarters.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="City_small.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CityMap_list.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="baseWarrior.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="baseMissile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="baseArms.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="faction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="nomelWarrior.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="gameObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Arch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="basePlace.h">
+      <Filter>头文件\Place</Filter>
+    </ClInclude>
+    <ClInclude Include="Headquarters.h">
+      <Filter>头文件\Place</Filter>
+    </ClInclude>
+    <ClInclude Include="City_small.h">
+      <Filter>头文件\Place</Filter>
+    </ClInclude>
+    <ClInclude Include="baseWarrior.h">
+      <Filter>头文件\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="baseMissile.h">
+      <Filter>头文件\Arms\Missile</Filter>
+    </ClInclude>
+    <ClInclude Include="baseArms.h">
+      <Filter>头文件\Arms</Filter>
+    </ClInclude>
+    <ClInclude Include="faction.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CityMap.h">
+      <Filter>头文件\CityMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CityMap_list.h">
+      <Filter>头文件\CityMap</Filter>
+    </ClInclude>
+    <ClInclude Include="nomelWarrior.h">
+      <Filter>头文件\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="gameObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword.h">
+      <Filter>头文件\Arms</Filter>
+    </ClInclude>
+    <ClInclude Include="Arch.h">
+      <Filter>头文件\Arms\Missile</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="项目文件\wow大作业需求.docx">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="项目文件\wow大作业类设计.xlsx">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="大作业wow.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

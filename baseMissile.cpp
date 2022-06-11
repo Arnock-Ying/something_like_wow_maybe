@@ -10,6 +10,7 @@ basePlace* baseMissile::getHurtCity()
 void baseMissile::_fire()
 {
 	hurtPlace = this->Holder->getNextCity();
+	if (hurtPlace == nullptr) return;
 	if (!hurtPlace->getOccupier() == Holder->getCamp())
 	{
 		for (auto i : hurtPlace->Warriors())

@@ -226,7 +226,7 @@ namespace api {
 			}
 			for (midI = TextOutStart; midI <= TextOutEnd; midI++)
 			{
-				for (midJ = TextOffest[midI] / textWidth, midK = 0; midJ < TextOffestMax[midI] / textWidth + TextHigh && midK < TextHigh && midK < LineNumber[midI]; midJ++, midK++)
+				for (midJ = TextOffest[midI] / textWidth, midK = 0; midJ < TextOffestMax[midI] / textWidth + TextHigh && midK < TextHigh && midK < LineNumber[midI]&&midJ<LineNumber[midI]; midJ++, midK++)
 				{
 					outtextxy(CityX[midI] + Offest - 460, midK * textHigh + 70, LinePut[midI][midJ]);
 				}

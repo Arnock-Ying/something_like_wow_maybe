@@ -48,7 +48,8 @@ void lion::UpdataStart()
 	if (wow::worldTime == 5) {
 		if (loyalty <= 0 && location != dynamic_cast<basePlace*>(GameManager::manager->Header(destID)))
 		{
-			location->drawText << "run!";
+			wow::output << name << " : run!\n";
+			drawPut(" run!进行一个飞快的润！");
 			Destroy();
 		}
 	}

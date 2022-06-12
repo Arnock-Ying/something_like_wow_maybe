@@ -154,5 +154,8 @@ public:
 	void _countattack(baseWarrior*);
 	bool _addArms(baseArms*);
 	void _beShoot(baseMissile*);
+
+	void drawPut(std::string);
+	std::string to_string();
 };
 

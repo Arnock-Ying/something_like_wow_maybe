@@ -92,10 +92,11 @@ void CityMap_list::PanelUpdata()
 	wchar_t** keyText = new wchar_t* [placeList.size()];
 	for (int i = 0; i < placeList.size(); ++i)
 	{
+		KeyList[i] = placeList[i]->drawText.str();
 		keyText[i] = new wchar_t[KeyList[i].size() + 1];
 		for (int j = 0; j < KeyList[i].size(); ++j)
 			keyText[i][j] = KeyList[i][j];
-		keyText[i][KeyList[i].size()] = L'\0';
+		keyText[i][KeyList[i].size()] = 0;
 
 		RGBList[i] = colors[placeList[i]->getCamp() + 1];
 	}

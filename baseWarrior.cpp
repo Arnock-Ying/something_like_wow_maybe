@@ -3,6 +3,9 @@
 #include "Headquarters.h"
 #include "GameManager.h"
 #include "baseArms.h"
+#include <string>
+#include <locale>
+#include <codecvt>
 
 using namespace wow;
 using namespace std;
@@ -184,6 +187,12 @@ void baseWarrior::_updata()
 				}
 			}
 		}
+	if (wow::worldTime == 55)
+	{
+		drawPut(to_string());
+		output << to_string();
+	}
+
 }
 
 void baseWarrior::_move()
@@ -275,4 +284,25 @@ void baseWarrior::_beShoot(baseMissile* m)//TODO->
 	Log("be shoot by " + m->name + " from " + m->Holder->name);
 	m->OnHart(this);
 	OnBeShoot(m);
+}
+
+void baseWarrior::drawPut(std::string s)
+{
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+
+	location->drawText.fill(L'0');
+	location->drawText.width(3);
+	location->drawText << worldTime.getHour();
+	location->drawText << L":";
+	location->drawText.width(2);
+	location->drawText << worldTime.getMin() << L' ' << converter.from_bytes(name) << L": " << converter.from_bytes(s) << std::endl;
+}
+
+std::string baseWarrior::to_string()
+{
+	std::string output = name + ":{";
+	output += "health=" + std::to_string(health);
+	output += ";power=" + std::to_string(power);
+	output += "}\n";
+	return output;
 }

@@ -35,3 +35,15 @@ int CityMap::onlyOnceHeader()
 	}
 	return winner;
 }
+
+void CityMap::_panelInit()
+{
+	onInit = true;
+	PanelInit();
+}
+
+void CityMap::_panelIpdata()
+{
+	if (!onInit)return;
+	PanelUpdata();
+}

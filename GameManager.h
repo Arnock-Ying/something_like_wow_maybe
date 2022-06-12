@@ -12,6 +12,9 @@ public:
 	static int headerMaxHealth;
 	CityMap* cityMap = nullptr;
 	static GameManager* manager;
+	
+	bool ifdraw = true;
+	int UpdataFixTime = 200;
 public:
 	GameManager();
 	~GameManager();

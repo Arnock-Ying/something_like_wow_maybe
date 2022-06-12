@@ -28,6 +28,9 @@
     <Filter Include="头文件\CityMap">
       <UniqueIdentifier>{f9185e2a-23cc-4c11-956f-0f3a8409103f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\GUI">
+      <UniqueIdentifier>{f935661b-d45d-405f-bbe8-878ca565729f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="源.cpp">
@@ -88,6 +91,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="wolf.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CityPrint.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -154,6 +163,12 @@
     </ClInclude>
     <ClInclude Include="Warriors.h">
       <Filter>头文件\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>头文件\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CityPrint.h">
+      <Filter>头文件\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

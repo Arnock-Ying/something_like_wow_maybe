@@ -38,6 +38,8 @@ void dragon::OnAfterAttack()
 	if (ifWin) morale += 0.2;
 	else morale -= 0.2;
 	if (ifTTK && Action() && morale > 0.8)
-		//std::cout << "ruaaaa¡ª¡ª¡ª¡ª¡ª¡ª!";
-		wow::output << "ºß£¬ºß°¡°¡°¡°¡¡ª¡ª!\n";
+	{
+		wow::output << "ruaaaa¡ª¡ª¡ª¡ª¡ª¡ª!\n";
+		location->drawText << "ºß£¬ºß°¡°¡°¡°¡¡ª¡ª!\n";
+	}
 }

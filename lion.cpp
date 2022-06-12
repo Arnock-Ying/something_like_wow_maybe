@@ -46,7 +46,11 @@ void lion::OnAfterAttack()
 void lion::UpdataStart()
 {
 	if (wow::worldTime == 5) {
-		if (loyalty <= 0 && location != dynamic_cast<basePlace*>(GameManager::manager->Header(destID))) Destroy();
+		if (loyalty <= 0 && location != dynamic_cast<basePlace*>(GameManager::manager->Header(destID)))
+		{
+			location->drawText << "run!";
+			Destroy();
+		}
 	}
 	if (wow::worldTime == 40) {
 		late_health = health;

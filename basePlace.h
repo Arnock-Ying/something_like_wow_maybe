@@ -2,6 +2,7 @@
 
 #include <list>
 #include <vector>
+#include <sstream>
 
 #include "gameObject.h"
 #include "baseWarrior.h"
@@ -47,7 +48,7 @@ protected:
 	std::vector<baseWarrior*> warriors;
 
 public:
-	//static CityMap* cityMap;
+	std::wstringstream drawText;
 
 public:
 	basePlace();

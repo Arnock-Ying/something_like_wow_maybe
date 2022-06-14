@@ -51,7 +51,6 @@ void Headquarters::BackLiveToHeader()
 
 void Headquarters::Updata()
 {
-
 	if (wow::worldTime.getMin() == 0)
 		productedWars();
 }
@@ -70,8 +69,9 @@ void Headquarters::productedWars()
 				life -= production_list[nextProductionItr]->DefaultHealth();
 				war->setHealth(war->DefaultHealth());
 				war->setAttack(war->DefaultAttack());
-				war->name = "No." + std::to_string(productedID) + (campfig == 0 ? " blue" : " red") + " warrior";
+				war->name = (campfig == 0 ? " blue " : " red ") + war->name + ' ' + std::to_string(productedID);
 				Log(war->name + " bron! last life " + std::to_string(life));
+				drawPut(war->name + " bron!");
 				for (int armI = 0; armI < production_list[nextProductionItr]->getmaxArmsNum(); armI++)
 				{
 					baseArms* arm = armsProduction_list[(productedID + armI) % armsProduction_list.size()]->_factionArm(war);

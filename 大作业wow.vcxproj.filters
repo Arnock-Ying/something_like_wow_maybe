@@ -99,6 +99,9 @@
     <ClCompile Include="GUI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="boom.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="CityPrint.h">
       <Filter>头文件\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="boom.h">
+      <Filter>头文件\Arms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

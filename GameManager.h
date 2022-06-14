@@ -7,12 +7,12 @@ class GameManager
 {
 private:
 	int maxLoopNum = -1;
-	
+
 public:
 	static int headerMaxHealth;
 	CityMap* cityMap = nullptr;
 	static GameManager* manager;
-	
+
 	bool ifdraw = true;
 	int UpdataFixTime = 200;
 public:
@@ -23,8 +23,14 @@ public:
 	inline Headquarters* Header(int n) { return cityMap->Header(n); }
 
 	void readNumFromScreen();
-	void gameInit();
+	void gameInit(int msg = 0);
 	void gameRun();
 	void gameDeleted();
 
+};
+
+enum GameManagerMessage
+{
+	GMM_DRAW = 0,
+	GMM_NOTDRAW = 1
 };

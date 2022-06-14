@@ -18,6 +18,7 @@ baseWarrior* lion::factionWar()
 void lion::Start()
 {
 	loyalty = location->getLive();
+	drawPut("Its loyalty is " + std::to_string(loyalty));
 }
 
 void lion::OnAttack(baseWarrior*)

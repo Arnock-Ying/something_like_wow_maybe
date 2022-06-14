@@ -3,6 +3,9 @@
 #include <list>
 #include <vector>
 #include <sstream>
+#include <string>
+#include <locale>
+#include <codecvt>
 
 #include "gameObject.h"
 #include "baseWarrior.h"
@@ -88,11 +91,11 @@ public:
 	/// 将城市中的生命元搬运回占领司令部
 	/// </summary>
 	void BackLiveToHeader();
-	
+
 
 	void _attack();
 	//virtual void _getMissile(baseMissile*);
-	
+
 	/// <summary>
 	/// 判断warrior是否能够进入城市，防止溢出
 	/// </summary>
@@ -122,5 +125,6 @@ public:
 	virtual void Clear() {};
 
 	void _clear();
+	void drawPut(std::string, std::string n = "\114");
 };
 

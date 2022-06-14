@@ -16,8 +16,12 @@ void wow::Debug::Log(std::string s)
 
 void wow::Output::textOut(std::string s)
 {
-	//TODO->
-	std::cout << worldTime.getHour() << ":" << worldTime.getMin() << " " << s;
+	std::cout.fill('0');
+	std::cout.width(3);
+	std::cout << wow::worldTime.getHour();
+	std::cout << ":";
+	std::cout.width(2);
+	std::cout << wow::worldTime.getMin() << ' ' << s;
 }
 
 std::ostream& wow::Output::operator<<(std::string s)

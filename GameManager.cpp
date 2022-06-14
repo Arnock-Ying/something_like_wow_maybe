@@ -20,13 +20,16 @@ GameManager::~GameManager()
 	manager = nullptr;
 }
 
-void GameManager::gameInit()
+void GameManager::gameInit(int msg)
 {
 	if (cityMap != nullptr)
 		delete cityMap;
 	headerMaxHealth = 2;
 	cityMap = new CityMap_list();
+	if (msg & GMM_NOTDRAW)ifdraw = false;
+	else ifdraw = true;
 	cityMap->_panelInit();
+
 }
 
 void GameManager::gameRun()
@@ -83,7 +86,7 @@ void GameManager::gameRun()
 		}
 		if (ifdraw)
 			cityMap->_panelIpdata();
-		if (KEYDOWN(VK_ESCAPE))
+		if (KEYDOWN(VK_ESCAPE) || (!ifdraw && iffinish))
 			break;
 	}
 }

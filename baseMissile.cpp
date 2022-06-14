@@ -9,6 +9,7 @@ basePlace* baseMissile::getHurtCity()
 
 void baseMissile::_fire()
 {
+	baseWarrior* killWar = nullptr;
 	hurtPlace = this->Holder->getNextCity();
 	if (hurtPlace == nullptr) return;
 	if (!hurtPlace->getOccupier() == Holder->getCamp())
@@ -21,10 +22,12 @@ void baseMissile::_fire()
 					{
 						i->_getHart(power, false);
 						i->_beShoot(this);
+						if (i->getHealth() <= 0)killWar = i;
 						break;
 					}
 		}
 		this->durable--;
+		Holder->drawPut(Holder->name + " shot " + (killWar == nullptr ? "." : ("kill " + killWar->name)));
 		Fire(hurtPlace);
 	}
 }

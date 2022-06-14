@@ -27,33 +27,41 @@ void baseWarrior::foreachUpdata()
 void baseWarrior::foreachHourStart()
 {
 	for (auto i : Warriors)
-	{
-		i->OnHourStart();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->OnHourStart();
+			}
 }
 
 void baseWarrior::foreachHourEnd()
 {
 	for (auto i : Warriors)
-	{
-		i->OnHourEnd();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->OnHourEnd();
+			}
 }
 
 void baseWarrior::foreachUpdataStart()
 {
 	for (auto i : Warriors)
-	{
-		i->UpdataStart();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->UpdataStart();
+			}
 }
 
 void baseWarrior::foreachUpdataEnd()
 {
 	for (auto i : Warriors)
-	{
-		i->UpdataEnd();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->UpdataEnd();
+			}
 }
 
 void baseWarrior::ResetMapState()
@@ -67,9 +75,11 @@ void baseWarrior::ResetMapState()
 void baseWarrior::foreachMove()
 {
 	for (auto i : Warriors)
-	{
-		i->_move();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->_move();
+			}
 }
 
 void baseWarrior::foreachGetReward()
@@ -190,7 +200,6 @@ void baseWarrior::_updata()
 	if (wow::worldTime == 55)
 	{
 		drawPut(to_string());
-		output << to_string();
 	}
 
 }
@@ -216,6 +225,7 @@ void baseWarrior::_move()
 				return;
 			}
 	Log(" moved unSuccess,now in " + locdPtr->name);
+	drawPut("move to " + locdPtr->name + " with health= " + std::to_string(health) + " ,power= " + std::to_string(power));
 	ifMoved = true;
 
 }
@@ -244,10 +254,12 @@ void baseWarrior::afterHartWar(baseWarrior* w)
 	{
 		w->OnDead(this);
 		this->OnKillEnemy(w);
+		drawPut(name + " was killed in " + location->name);
 	}
 }
 void baseWarrior::_attack(baseWarrior* w)
 {
+	drawPut(name + " attack to " + w->name + " with health= " + std::to_string(health) + " ,power= " + std::to_string(power));
 	int at = getArmAttack();
 	OnAttack(w);
 	w->_getHart(at + power);
@@ -256,6 +268,7 @@ void baseWarrior::_attack(baseWarrior* w)
 
 void baseWarrior::_countattack(baseWarrior* w)
 {
+	drawPut(name + " fought back against " + w->name + " in " + location->name);
 	if (!ifCounterattack) return;
 	int at = getArmAttack();
 	OnCounterAttack(w);
@@ -288,21 +301,18 @@ void baseWarrior::_beShoot(baseMissile* m)//TODO->
 
 void baseWarrior::drawPut(std::string s)
 {
-	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-
-	location->drawText.fill(L'0');
-	location->drawText.width(3);
-	location->drawText << worldTime.getHour();
-	location->drawText << L":";
-	location->drawText.width(2);
-	location->drawText << worldTime.getMin() << L' ' << converter.from_bytes(name) << L": " << converter.from_bytes(s) << std::endl;
+	location->drawPut(s, name);
 }
 
 std::string baseWarrior::to_string()
 {
 	std::string output = name + ":{";
 	output += "health=" + std::to_string(health);
-	output += ";power=" + std::to_string(power);
-	output += "}\n";
+	output += ",power=" + std::to_string(power);
+	output += ",arms={";
+	for (auto a : arms)
+		output += (a == nullptr ? "null" : a->to_string()) + ",";
+
+	output += "}}";
 	return output;
 }

@@ -30,9 +30,9 @@ public:
 	static void foreachGetifAttack();
 	static void ResetMapState();
 	static void foreachAttack();
-	static void foreachBackLive();
 	static void foreachClear();
 
+	static void Delete();
 protected:
 	int life = 0;
 	int campfig = -1;

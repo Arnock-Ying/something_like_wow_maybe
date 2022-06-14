@@ -3,11 +3,12 @@
 #include "faction.h"
 #include "GameManager.h"
 
+int Headquarters::BaseHealth = 200;
 Headquarters::Headquarters(int i)
 {
 	campfig = i;
-	name = "Headqurters " + std::to_string(i);
-	life = 200;
+	name = std::string(i==0?"blue ":"red ") + "Headqurter";
+	life = BaseHealth;
 }
 
 int Headquarters::getOccupier()const
@@ -25,11 +26,16 @@ baseWarrior* Headquarters::enterWarrior(baseWarrior* war)
 	warriors.push_back(war);
 	war->location = this;
 	if (war->getCamp() != campfig)
+	{
 		++enterEntity;
+		war->drawPut(war->name + " enter " + name + "  with health= " + std::to_string(war->getHealth()) + " ,power= " + std::to_string(war->getAttack()));
+	}
 	if (enterEntity >= GameManager::headerMaxHealth)
 	{
 		Log("has takend!!!!!!!!\n--------------------");
+		drawPut(name + " has been taken!");
 		SetAction(false);
+		GameManager::manager->iffinish = true;
 	}
 	return war;
 }
@@ -53,6 +59,11 @@ void Headquarters::Updata()
 {
 	if (wow::worldTime.getMin() == 0)
 		productedWars();
+	if (wow::worldTime == 55)
+	{
+		Log("show life " + std::to_string(life));
+		drawPut(std::to_string(life) + " elements in " + name);
+	}
 }
 
 void Headquarters::productedWars()

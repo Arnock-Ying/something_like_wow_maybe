@@ -27,6 +27,7 @@ public:
 	static void foreachGetReward();
 
 	static void Clear();
+	static void Delete();
 public:
 	/// <summary>
 	/// *必须重载* 返回默认血量的引用（记得为它设置静态变量）

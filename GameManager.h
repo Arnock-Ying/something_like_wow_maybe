@@ -14,7 +14,9 @@ public:
 	static GameManager* manager;
 
 	bool ifdraw = true;
+	bool iffinish = false;
 	int UpdataFixTime = 200;
+	int CityNum = 5;
 public:
 	GameManager();
 	~GameManager();

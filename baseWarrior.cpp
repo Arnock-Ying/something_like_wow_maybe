@@ -115,6 +115,17 @@ void baseWarrior::Clear()
 	}
 }
 
+void baseWarrior::Delete()
+{
+	//for (auto i = Warriors.begin(); i != Warriors.end(); ++i)
+	//{
+	//	if (*i != nullptr)
+	//		delete (*i);
+	//}
+
+	Warriors.clear();
+}
+
 baseWarrior* baseWarrior::_factionWar(Headquarters* headquarters)
 {
 	baseWarrior* war = factionWar();

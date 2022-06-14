@@ -22,20 +22,19 @@ void basePlace::foreachAttack()
 	}
 }
 
-void basePlace::foreachBackLive()
-{
-	for (auto i : Places)
-	{
-		//i->BackLiveToHeader();
-	}
-}
-
 void basePlace::foreachClear()
 {
 	for (auto i : Places)
 	{
 		i->_clear();
 	}
+}
+
+void basePlace::Delete()
+{
+	//for (auto i : Places)
+	//	delete i;
+	Places.clear();
 }
 
 void basePlace::foreachHourStart()
@@ -97,6 +96,13 @@ basePlace::basePlace()
 
 basePlace::~basePlace()
 {
+	for (auto i : warriors)
+	{
+		if (i != nullptr)
+		{
+			i->SetAction(false);
+		}
+	}
 	for (auto i = Places.begin(); i != Places.end(); i++)
 	{
 		if (*i == this)
@@ -116,11 +122,12 @@ void basePlace::BackLiveToHeader()
 
 		Log(header->name + " get this live!");
 		for (auto i : Warriors())
-			if (i->getCamp() == this->getOccupier())
-			{
-				i->drawPut(i->name + " earned " + std::to_string(life) + " for his headquarter.");
-				break;
-			}
+			if (i != nullptr)if (i->Action())
+				if (i->getCamp() == this->getOccupier())
+				{
+					i->drawPut(i->name + " earned " + std::to_string(life) + " for his headquarter.");
+					break;
+				}
 		life = 0;
 	}
 }

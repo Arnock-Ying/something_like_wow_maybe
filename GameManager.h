@@ -3,6 +3,12 @@
 #include "CityMap.h"
 #include "Headquarters.h"
 
+enum GameManagerMessage
+{
+	GMM_DRAW = 0,
+	GMM_NOTDRAW = 1
+};
+
 class GameManager
 {
 private:
@@ -28,11 +34,4 @@ public:
 	void gameInit(int msg = 0);
 	void gameRun();
 	void gameDeleted();
-
-};
-
-enum GameManagerMessage
-{
-	GMM_DRAW = 0,
-	GMM_NOTDRAW = 1
 };

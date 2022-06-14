@@ -95,11 +95,11 @@ void GameManager::gameRun()
 				}
 				if (worldTime == 30)
 				{
-					basePlace::foreachAttack();
+					basePlace::foreachBackLive();
 				}
 				if (worldTime == 40)
 				{
-					basePlace::foreachBackLive();
+					basePlace::foreachAttack();
 				}
 				basePlace::foreachUpdata();
 				baseWarrior::foreachUpdata();

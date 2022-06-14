@@ -126,6 +126,6 @@ public:
 	virtual void Clear() {};
 
 	void _clear();
-	void drawPut(std::string, std::string n = "\114");
+	void drawPut(std::string, std::string n = "\114\5\14\191\98\10");
 };
 

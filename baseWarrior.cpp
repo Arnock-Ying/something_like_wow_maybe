@@ -205,9 +205,12 @@ void baseWarrior::_updata()
 				if (miss->FireTime() == wow::worldTime)
 				{
 					miss->_fire();
+					if (miss->ifDestroy())
+						miss->SetAction(false);
 				}
 			}
 		}
+	_clearArm();
 	if (wow::worldTime == 55)
 	{
 		drawPut(to_string());
@@ -237,7 +240,7 @@ void baseWarrior::_move()
 				return;
 			}
 	Log(" moved unSuccess,now in " + locdPtr->name);
-	
+
 	ifMoved = true;
 
 }
@@ -309,6 +312,19 @@ void baseWarrior::_beShoot(baseMissile* m)//TODO->
 	Log("be shoot by " + m->name + " from " + m->Holder->name);
 	m->OnHart(this);
 	OnBeShoot(m);
+}
+
+void baseWarrior::_clearArm()
+{
+	for (auto& i : arms)
+	{
+		if (i != nullptr)
+			if (!i->Action())
+			{
+				delete i;
+				i = nullptr;
+			}
+	}
 }
 
 void baseWarrior::drawPut(std::string s)

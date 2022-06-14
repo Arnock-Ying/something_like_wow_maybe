@@ -80,7 +80,7 @@ void Headquarters::productedWars()
 			life -= production_list[nextProductionItr]->DefaultHealth();
 			war->setHealth(war->DefaultHealth());
 			war->setAttack(war->DefaultAttack());
-			war->name = (campfig == 0 ? " blue " : " red ") + war->name + ' ' + std::to_string(productedID);
+			war->name = (campfig == 0 ? "blue " : "red ") + war->name + ' ' + std::to_string(productedID);
 			Log(war->name + " bron! last life " + std::to_string(life));
 			drawPut(war->name + " bron!");
 			for (int armI = 0; armI < production_list[nextProductionItr]->getmaxArmsNum(); armI++)
@@ -88,6 +88,7 @@ void Headquarters::productedWars()
 				baseArms* arm = armsProduction_list[(productedID + armI) % armsProduction_list.size()]->_factionArm(war);
 				if (arm->ifDestroy())
 					arm->SetAction(false);
+					
 			}
 			nextProductionItr = (++nextProductionItr) % production_list.size();
 			productedID++;

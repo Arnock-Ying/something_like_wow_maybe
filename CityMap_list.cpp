@@ -5,10 +5,14 @@
 #include "GameManager.h"
 #include "Sword.h"
 #include "Arch.h"
+#include "CityPrint.h"
 
 CityMap_list::CityMap_list(int lengh) :CityMap(lengh + 2)
 {
 	headquarters.resize(2);
+	KeyList.resize(lengh + 2);
+	RGBList.resize(lengh + 2, WHITE);
+
 
 	for (auto i : { 0,1 })
 	{
@@ -19,18 +23,12 @@ CityMap_list::CityMap_list(int lengh) :CityMap(lengh + 2)
 	blueHeader = headquarters[0];
 	redHeader = headquarters[1];
 
-	blueHeader->production_list = { new nomelWarrior() };
-	redHeader->production_list = { new nomelWarrior() };
-	blueHeader->armsProduction_list = { new Sword(),new Arch() };
-	redHeader->armsProduction_list = { new Sword() ,new Arch() };
-
 	for (int i = 1; i <= lengh; ++i)
 	{
 		placeList[i] = new City_small();
+		placeList[i]->drawText.str(KeyList[i]);
 	}
 }
-
-
 
 basePlace* CityMap_list::foundNextPlaceFromTo(basePlace* nowPlace, Headquarters* destination)
 {
@@ -62,6 +60,55 @@ basePlace* CityMap_list::foundNextPlaceFromTo(basePlace* nowPlace, Headquarters*
 basePlace* CityMap_list::foundNextPlaceFromTo(basePlace* nowPlace, int destination)
 {
 	return foundNextPlaceFromTo(nowPlace, destination == 0 ? blueHeader : redHeader);
+}
+
+int CityMap_list::onlyOnceHeader()
+{
+	if (!redHeader->Action() || !blueHeader->Action())
+	{
+		if (redHeader->Action())
+			return 1;
+		else if (blueHeader->Action())
+			return 0;
+		else
+			return -1;
+	}
+	else
+		return -2;
+}
+
+void CityMap_list::PanelInit()
+{
+	api::UIinitialize(placeList.size());
+}
+
+void CityMap_list::PanelUpdata()
+{
+	long long colors[] = { WHITE,RED,BLUE };
+	BeginBatchDraw();
+
+	api::BackImageManage.PutImage();
+
+	wchar_t** keyText = new wchar_t* [placeList.size()];
+	for (int i = 0; i < placeList.size(); ++i)
+	{
+		KeyList[i] = placeList[i]->drawText.str();
+		keyText[i] = new wchar_t[KeyList[i].size() + 1];
+		for (int j = 0; j < KeyList[i].size(); ++j)
+			keyText[i][j] = KeyList[i][j];
+		keyText[i][KeyList[i].size()] = 0;
+
+		RGBList[i] = colors[placeList[i]->getCamp() + 1];
+	}
+	GetCursorPos(&api::Mouse);
+	api::CityManage.Move(api::Mouse);
+	api::CityManage.PrintCityStatePart1(RGBList.data());
+	api::CityManage.TextPrint(keyText, api::Mouse);
+
+	api::CityManage.Print();
+	EndBatchDraw();
+	for (int i = 0; i < placeList.size(); ++i)delete[] keyText[i];
+	delete[] keyText;
 }
 
 //void CityMap_list::foreachUpdata()
@@ -125,17 +172,3 @@ basePlace* CityMap_list::foundNextPlaceFromTo(basePlace* nowPlace, int destinati
 //	}
 //}
 //
-int CityMap_list::onlyOnceHeader()
-{
-	if (!redHeader->Action() || !blueHeader->Action())
-	{
-		if (redHeader->Action())
-			return 1;
-		else if (blueHeader->Action())
-			return 0;
-		else
-			return -1;
-	}
-	else
-		return -2;
-}

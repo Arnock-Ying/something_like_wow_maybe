@@ -1,6 +1,7 @@
 #include "basePlace.h"
 #include "CityMap.h"
 #include "GameManager.h"
+#include <corecrt_wstring.h>
 
 std::list<basePlace*> basePlace::Places;
 
@@ -22,20 +23,19 @@ void basePlace::foreachAttack()
 	}
 }
 
-void basePlace::foreachBackLive()
-{
-	for (auto i : Places)
-	{
-		i->BackLiveToHeader();
-	}
-}
-
 void basePlace::foreachClear()
 {
 	for (auto i : Places)
 	{
 		i->_clear();
 	}
+}
+
+void basePlace::Delete()
+{
+	//for (auto i : Places)
+	//	delete i;
+	Places.clear();
 }
 
 void basePlace::foreachHourStart()
@@ -50,7 +50,7 @@ void basePlace::ResetMapState()
 {
 	for (auto i : Places)
 	{
-		i->OnHourEnd();
+		//i->OnHourEnd();
 	}
 }
 
@@ -78,6 +78,14 @@ void basePlace::foreachGetifAttack()
 	}
 }
 
+void basePlace::foreachBackLive()
+{
+	for (auto i : Places)
+	{
+		i->BackLiveToHeader();
+	}
+}
+
 void basePlace::foreachUpdataStart()
 {
 	for (auto i : Places)
@@ -97,6 +105,13 @@ basePlace::basePlace()
 
 basePlace::~basePlace()
 {
+	for (auto i : warriors)
+	{
+		if (i != nullptr)
+		{
+			i->SetAction(false);
+		}
+	}
 	for (auto i = Places.begin(); i != Places.end(); i++)
 	{
 		if (*i == this)
@@ -113,8 +128,16 @@ void basePlace::BackLiveToHeader()
 	{
 		auto header = GameManager::manager->cityMap->Header(this->getOccupier());
 		header->addLive(life);
-		life = 0;
+
 		Log(header->name + " get this live!");
+		for (auto i : Warriors())
+			if (i != nullptr)if (i->Action())
+				if (i->getCamp() == this->getOccupier())
+				{
+					i->drawPut(i->name + " earned " + std::to_string(life) + " for his headquarter.");
+					break;
+				}
+		life = 0;
 	}
 }
 
@@ -188,7 +211,12 @@ void basePlace::_attack()
 			if (this->getOccupier() >= 0)
 			{
 				int winCamp = this->getOccupier();
-				if (lastWinnerCamp == winCamp)campfig = winCamp;
+				if (lastWinnerCamp == winCamp)
+				{
+					campfig = winCamp;
+					Log("flig to" + std::to_string(winCamp));
+					drawPut(std::string(winCamp == 1 ? "red" : "blue") + " flag raised in " + name);
+				}
 				for (auto i : warriors)
 				{
 					if (i != nullptr)
@@ -208,6 +236,7 @@ void basePlace::_attack()
 			if (i != nullptr)
 				if (i->Action())
 				{
+					i->_clearArm();
 					i->OnAfterAttack();
 				}
 		}
@@ -249,4 +278,20 @@ void basePlace::_clear()
 				i = nullptr;
 	}
 	Clear();
+}
+
+void basePlace::drawPut(std::string s, std::string n)
+{
+	if (n == "\114\5\14\191\98\10")n = name;
+	wow::output << (GameManager::manager->ifdraw ? name + " drawPut-" : "") << s << std::endl;
+
+	if (!GameManager::manager->ifdraw)return;
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+
+	drawText.fill(L'0');
+	drawText.width(3);
+	drawText << wow::worldTime.getHour();
+	drawText << L":";
+	drawText.width(2);
+	drawText << wow::worldTime.getMin() << L' ' << converter.from_bytes(n) << L": " << converter.from_bytes(s) << std::endl;
 }

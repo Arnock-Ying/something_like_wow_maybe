@@ -3,6 +3,9 @@
 #include "Headquarters.h"
 #include "GameManager.h"
 #include "baseArms.h"
+#include <string>
+#include <locale>
+#include <codecvt>
 
 using namespace wow;
 using namespace std;
@@ -24,33 +27,41 @@ void baseWarrior::foreachUpdata()
 void baseWarrior::foreachHourStart()
 {
 	for (auto i : Warriors)
-	{
-		i->OnHourStart();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->OnHourStart();
+			}
 }
 
 void baseWarrior::foreachHourEnd()
 {
 	for (auto i : Warriors)
-	{
-		i->OnHourEnd();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->OnHourEnd();
+			}
 }
 
 void baseWarrior::foreachUpdataStart()
 {
 	for (auto i : Warriors)
-	{
-		i->UpdataStart();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->UpdataStart();
+			}
 }
 
 void baseWarrior::foreachUpdataEnd()
 {
 	for (auto i : Warriors)
-	{
-		i->UpdataEnd();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->UpdataEnd();
+			}
 }
 
 void baseWarrior::ResetMapState()
@@ -64,9 +75,11 @@ void baseWarrior::ResetMapState()
 void baseWarrior::foreachMove()
 {
 	for (auto i : Warriors)
-	{
-		i->_move();
-	}
+		if (i != nullptr)
+			if (i->Action())
+			{
+				i->_move();
+			}
 }
 
 void baseWarrior::foreachGetReward()
@@ -100,6 +113,17 @@ void baseWarrior::Clear()
 		Warriors.erase(i);
 		delete ptr;
 	}
+}
+
+void baseWarrior::Delete()
+{
+	//for (auto i = Warriors.begin(); i != Warriors.end(); ++i)
+	//{
+	//	if (*i != nullptr)
+	//		delete (*i);
+	//}
+
+	Warriors.clear();
 }
 
 baseWarrior* baseWarrior::_factionWar(Headquarters* headquarters)
@@ -181,9 +205,17 @@ void baseWarrior::_updata()
 				if (miss->FireTime() == wow::worldTime)
 				{
 					miss->_fire();
+					if (miss->ifDestroy())
+						miss->SetAction(false);
 				}
 			}
 		}
+	_clearArm();
+	if (wow::worldTime == 55)
+	{
+		drawPut(to_string());
+	}
+
 }
 
 void baseWarrior::_move()
@@ -204,9 +236,11 @@ void baseWarrior::_move()
 				}
 				OnMoved();
 				Log(" moved Success from " + locdPtr->name + " to " + destPtr->name + ".");
+				drawPut("move to " + locdPtr->name + " with health= " + std::to_string(health) + " ,power= " + std::to_string(power));
 				return;
 			}
 	Log(" moved unSuccess,now in " + locdPtr->name);
+
 	ifMoved = true;
 
 }
@@ -235,10 +269,12 @@ void baseWarrior::afterHartWar(baseWarrior* w)
 	{
 		w->OnDead(this);
 		this->OnKillEnemy(w);
+		drawPut(name + " was killed in " + location->name);
 	}
 }
 void baseWarrior::_attack(baseWarrior* w)
 {
+	drawPut(name + " attack to " + w->name + " with health= " + std::to_string(health) + " ,power= " + std::to_string(power));
 	int at = getArmAttack();
 	OnAttack(w);
 	w->_getHart(at + power);
@@ -247,6 +283,7 @@ void baseWarrior::_attack(baseWarrior* w)
 
 void baseWarrior::_countattack(baseWarrior* w)
 {
+	drawPut(name + " fought back against " + w->name + " in " + location->name);
 	if (!ifCounterattack) return;
 	int at = getArmAttack();
 	OnCounterAttack(w);
@@ -275,4 +312,35 @@ void baseWarrior::_beShoot(baseMissile* m)//TODO->
 	Log("be shoot by " + m->name + " from " + m->Holder->name);
 	m->OnHart(this);
 	OnBeShoot(m);
+}
+
+void baseWarrior::_clearArm()
+{
+	for (auto& i : arms)
+	{
+		if (i != nullptr)
+			if (!i->Action())
+			{
+				delete i;
+				i = nullptr;
+			}
+	}
+}
+
+void baseWarrior::drawPut(std::string s)
+{
+	location->drawPut(s, name);
+}
+
+std::string baseWarrior::to_string()
+{
+	std::string output = name + ":{";
+	output += "health=" + std::to_string(health);
+	output += ",power=" + std::to_string(power);
+	output += ",arms={";
+	for (auto a : arms)
+		output += (a == nullptr ? "null" : a->to_string()) + ",";
+
+	output += "}}";
+	return output;
 }

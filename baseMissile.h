@@ -8,7 +8,6 @@ class baseMissile :
 	public baseArms
 {
 protected:
-	int power = 1;
 	int durable = 3;
 	basePlace* hurtPlace;
 

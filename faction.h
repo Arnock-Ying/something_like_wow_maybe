@@ -1,6 +1,6 @@
 #pragma once
 
-#define DEBUG
+//#define DEBUG
 
 #include <iostream>
 namespace wow {
@@ -10,13 +10,14 @@ namespace wow {
 		unsigned long long _time = 0;
 	public:
 
-		inline unsigned long long getHour() { return _time / 60; }
-		inline unsigned long long getMin() { return _time % 60; }
+		inline unsigned long long getHour()const { return _time / 60; }
+		inline unsigned long long getMin()const { return _time % 60; }
 		inline unsigned long long addTime() { return ++_time; }
 		inline unsigned long long addTime(int n = 1) { return _time += n; }
-		inline operator unsigned long long() { return getMin(); }
+		inline operator unsigned long long()const { return getMin(); }
 		inline Time& operator++(int) { ++_time; return *this; }
 		inline Time& operator++() { ++_time; return *this; }
+		inline void clear() { _time = 0; }
 
 	};
 

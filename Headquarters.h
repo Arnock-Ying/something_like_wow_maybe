@@ -13,6 +13,8 @@ public:
 	int nowEnemyID = -1;
 	std::vector<baseWarrior*>production_list;
 	std::vector<baseArms*>armsProduction_list;
+
+	static int BaseHealth;
 public:
 	Headquarters(int);
 

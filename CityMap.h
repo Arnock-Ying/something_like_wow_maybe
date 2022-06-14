@@ -5,6 +5,8 @@
 
 class CityMap
 {
+private:
+	bool onInit = false;
 protected:
 	std::vector<basePlace*> placeList;
 	std::vector<Headquarters*> headquarters;
@@ -28,7 +30,6 @@ public:
 	/// <returns> 下一个位置 </returns>
 	virtual basePlace* foundNextPlaceFromTo(basePlace* nowPlace, int destination);
 
-
 	//virtual void foreachUpdata() = 0;
 	//virtual void foreachHourStart() = 0;
 	//virtual void foreachUpdataStart() = 0;
@@ -41,5 +42,18 @@ public:
 	/// </summary>
 	/// <returns> 获胜阵营ID，未获胜返回-2，同归于尽返回-1 </returns>
 	virtual int onlyOnceHeader();
+
+	void _panelInit();
+	void _panelIpdata();
+
+	/// <summary>
+	/// 画板初始化
+	/// </summary>
+	virtual void PanelInit() {}
+
+	/// <summary>
+	/// 画板更新
+	/// </summary>
+	virtual void PanelUpdata() {}
 };
 

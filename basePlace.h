@@ -2,6 +2,10 @@
 
 #include <list>
 #include <vector>
+#include <sstream>
+#include <string>
+#include <locale>
+#include <codecvt>
 
 #include "gameObject.h"
 #include "baseWarrior.h"
@@ -24,11 +28,12 @@ public:
 	static void foreachUpdataEnd();
 	static void foreachHourEnd();
 	static void foreachGetifAttack();
+	static void foreachBackLive();
 	static void ResetMapState();
 	static void foreachAttack();
-	static void foreachBackLive();
 	static void foreachClear();
 
+	static void Delete();
 protected:
 	int life = 0;
 	int campfig = -1;
@@ -47,7 +52,7 @@ protected:
 	std::vector<baseWarrior*> warriors;
 
 public:
-	//static CityMap* cityMap;
+	std::wstringstream drawText;
 
 public:
 	basePlace();
@@ -86,12 +91,12 @@ public:
 	/// <summary>
 	/// 将城市中的生命元搬运回占领司令部
 	/// </summary>
-	void BackLiveToHeader();
-	
+	virtual void BackLiveToHeader();
+
 
 	void _attack();
 	//virtual void _getMissile(baseMissile*);
-	
+
 	/// <summary>
 	/// 判断warrior是否能够进入城市，防止溢出
 	/// </summary>
@@ -121,5 +126,6 @@ public:
 	virtual void Clear() {};
 
 	void _clear();
+	void drawPut(std::string, std::string n = "\114\5\14\191\98\10");
 };
 

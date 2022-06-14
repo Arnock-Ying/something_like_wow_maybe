@@ -27,6 +27,7 @@ public:
 	static void foreachGetReward();
 
 	static void Clear();
+	static void Delete();
 public:
 	/// <summary>
 	/// *必须重载* 返回默认血量的引用（记得为它设置静态变量）
@@ -154,5 +155,9 @@ public:
 	void _countattack(baseWarrior*);
 	bool _addArms(baseArms*);
 	void _beShoot(baseMissile*);
+	void _clearArm();
+
+	void drawPut(std::string);
+	std::string to_string();
 };
 

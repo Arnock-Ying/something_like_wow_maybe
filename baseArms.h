@@ -38,5 +38,7 @@ public:
 	/// 每分钟（游戏刻）调用
 	/// </summary>
 	virtual void Updata() {}
+
+	virtual std::string to_string() { return ""; }
 };
 

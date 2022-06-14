@@ -1,4 +1,5 @@
 #include "CityMap.h"
+#include "GameManager.h"
 
 CityMap::CityMap(int n)
 {
@@ -34,4 +35,18 @@ int CityMap::onlyOnceHeader()
 			}
 	}
 	return winner;
+}
+
+void CityMap::_panelInit()
+{
+	if (!GameManager::manager->ifdraw)return;
+	onInit = true;
+	PanelInit();
+}
+
+void CityMap::_panelIpdata()
+{
+	if (!GameManager::manager->ifdraw)return;
+	if (!onInit)return;
+	PanelUpdata();
 }

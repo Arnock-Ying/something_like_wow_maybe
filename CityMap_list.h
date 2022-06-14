@@ -1,11 +1,14 @@
 #pragma once
 #include "CityMap.h"
+
 class CityMap_list :
 	public CityMap
 {
 private:
-	
 	Headquarters* blueHeader, * redHeader;
+
+	std::vector<long long> RGBList;
+	std::vector<std::wstring> KeyList;
 
 public:
 	CityMap_list(int length = 5);
@@ -21,5 +24,8 @@ public:
 	//void foreachMove();
 
 	int onlyOnceHeader();
+
+	void PanelInit();
+	void PanelUpdata();
 };
 

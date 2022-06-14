@@ -144,12 +144,15 @@
     <ClCompile Include="baseMissile.cpp" />
     <ClCompile Include="basePlace.cpp" />
     <ClCompile Include="baseWarrior.cpp" />
+    <ClCompile Include="boom.cpp" />
+    <ClCompile Include="CityPrint.cpp" />
     <ClCompile Include="City_small.cpp" />
     <ClCompile Include="CityMap.cpp" />
     <ClCompile Include="CityMap_list.cpp" />
     <ClCompile Include="dragon.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="gameObject.cpp" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Headquarters.cpp" />
     <ClCompile Include="faction.cpp" />
     <ClCompile Include="iceman.cpp" />
@@ -166,12 +169,15 @@
     <ClInclude Include="baseMissile.h" />
     <ClInclude Include="basePlace.h" />
     <ClInclude Include="baseWarrior.h" />
+    <ClInclude Include="boom.h" />
+    <ClInclude Include="CityPrint.h" />
     <ClInclude Include="City_small.h" />
     <ClInclude Include="CityMap.h" />
     <ClInclude Include="CityMap_list.h" />
     <ClInclude Include="dragon.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="gameObject.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="Headquarters.h" />
     <ClInclude Include="iceman.h" />
     <ClInclude Include="lion.h" />
@@ -184,6 +190,7 @@
     <ClInclude Include="wolf.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data.ini" />
     <None Include="项目文件\wow大作业类设计.xlsx" />
     <None Include="项目文件\wow大作业需求.docx" />
     <None Include="项目文件\大作业文档.docx" />

@@ -25,7 +25,7 @@ public:
 	void OnAfterAttack();
 	void UpdataStart();
 	void OnDead(baseWarrior*);
-	inline void setK(int x) { K = x; }
-	inline int getK() { return K; }
+	static void setK(int x) { K = x; }
+	static int getK() { return K; }
 };
 

@@ -273,7 +273,7 @@ void basePlace::_clear()
 void basePlace::drawPut(std::string s, std::string n)
 {
 	if (n == "\114")n = name;
-	wow::output << (GameManager::manager->ifdraw ? name + " drawPut- " : "") << s << std::endl;
+	wow::output << (GameManager::manager->ifdraw ? name + " drawPut-" : "") << s << std::endl;
 
 	if (!GameManager::manager->ifdraw)return;
 	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;

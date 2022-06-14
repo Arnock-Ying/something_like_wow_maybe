@@ -4,7 +4,8 @@
 int lion::defaultHealth = 6;
 int lion::defaultAttack = 7;
 int lion::K = 1;
-lion::lion() {
+lion::lion()
+{
 	int loyalty = 1;
 	int late_health = 0;
 }
@@ -39,22 +40,24 @@ void lion::OnWin()
 
 void lion::OnAfterAttack()
 {
-	if (!ifWin && ifTTK) {
+	if (!ifWin && ifTTK)
+	{
 		loyalty -= K;
 	}
 }
 
 void lion::UpdataStart()
 {
-	if (wow::worldTime == 5) {
+	if (wow::worldTime == 5)
+	{
 		if (loyalty <= 0 && location != dynamic_cast<basePlace*>(GameManager::manager->Header(destID)))
 		{
-			wow::output << name << " : run!\n";
-			drawPut(" run!进行一个飞快的润！");
+			drawPut(name + " run array!进行一个飞快的润！");
 			Destroy();
 		}
 	}
-	if (wow::worldTime == 40) {
+	if (wow::worldTime == 40)
+	{
 		late_health = health;
 	}
 }

@@ -15,6 +15,7 @@ void dragon::Start()
 {
 	int headerLife = location->getLive();
 	morale = headerLife * 1.0 / defaultHealth;
+	drawPut("Its loyalty is " + std::to_string(morale));
 }
 
 void dragon::OnAttack(baseWarrior*)

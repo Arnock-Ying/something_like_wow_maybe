@@ -18,7 +18,8 @@ void basePlace::foreachAttack()
 	for (auto i : Places)
 	{
 		i->_attack();
-		i->BackLiveToHeader();
+		if (i->ifAttack)
+			i->BackLiveToHeader();
 	}
 }
 
@@ -49,7 +50,7 @@ void basePlace::ResetMapState()
 {
 	for (auto i : Places)
 	{
-		i->OnHourEnd();
+		//i->OnHourEnd();
 	}
 }
 
@@ -74,6 +75,14 @@ void basePlace::foreachGetifAttack()
 	for (auto i : Places)
 	{
 		i->ifAttack = i->getOccupier() == -1;
+	}
+}
+
+void basePlace::foreachBackLive()
+{
+	for (auto i : Places)
+	{
+		i->BackLiveToHeader();
 	}
 }
 

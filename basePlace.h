@@ -28,6 +28,7 @@ public:
 	static void foreachUpdataEnd();
 	static void foreachHourEnd();
 	static void foreachGetifAttack();
+	static void foreachBackLive();
 	static void ResetMapState();
 	static void foreachAttack();
 	static void foreachClear();
@@ -90,7 +91,7 @@ public:
 	/// <summary>
 	/// 将城市中的生命元搬运回占领司令部
 	/// </summary>
-	void BackLiveToHeader();
+	virtual void BackLiveToHeader();
 
 
 	void _attack();

@@ -233,10 +233,11 @@ void baseWarrior::_move()
 				}
 				OnMoved();
 				Log(" moved Success from " + locdPtr->name + " to " + destPtr->name + ".");
+				drawPut("move to " + locdPtr->name + " with health= " + std::to_string(health) + " ,power= " + std::to_string(power));
 				return;
 			}
 	Log(" moved unSuccess,now in " + locdPtr->name);
-	drawPut("move to " + locdPtr->name + " with health= " + std::to_string(health) + " ,power= " + std::to_string(power));
+	
 	ifMoved = true;
 
 }

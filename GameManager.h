@@ -24,7 +24,7 @@ public:
 	inline void setMaxLoop(int n = -1) { maxLoopNum = n; }
 	inline Headquarters* Header(int n) { return cityMap->Header(n); }
 
-	void readNumFromScreen();
+	void readNumFromScreen(std::istream& os = std::cin);
 	void gameInit(int msg = 0);
 	void gameRun();
 	void gameDeleted();

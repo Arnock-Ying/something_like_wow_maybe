@@ -22,14 +22,13 @@ GameManager::~GameManager()
 	manager = nullptr;
 }
 
-void GameManager::readNumFromScreen()
+void GameManager::readNumFromScreen(std::istream& os)
 {
-	using std::cin;
 	int M, N, R, K, T;
 	int h[5], a[5];
-	cin >> M >> N >> R >> K >> T;
-	for (int i = 0; i < 5; i++)cin >> h[i];
-	for (int i = 0; i < 5; i++)cin >> a[i];
+	os >> M >> N >> R >> K >> T;
+	for (int i = 0; i < 5; i++)os >> h[i];
+	for (int i = 0; i < 5; i++)os >> a[i];
 
 	Headquarters::BaseHealth = M;
 	CityNum = N;

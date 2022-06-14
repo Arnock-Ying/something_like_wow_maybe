@@ -282,7 +282,7 @@ void basePlace::_clear()
 
 void basePlace::drawPut(std::string s, std::string n)
 {
-	if (n == "\114\5\14\191\98\10")n = name;
+	if (n == "\114\5\14\19198\10")n = name;
 	wow::output << (GameManager::manager->ifdraw ? name + " drawPut-" : "") << s << std::endl;
 
 	if (!GameManager::manager->ifdraw)return;

@@ -190,6 +190,7 @@
     <ClInclude Include="wolf.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data.ini" />
     <None Include="项目文件\wow大作业类设计.xlsx" />
     <None Include="项目文件\wow大作业需求.docx" />
     <None Include="项目文件\大作业文档.docx" />

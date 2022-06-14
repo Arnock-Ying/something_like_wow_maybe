@@ -187,6 +187,9 @@
     <None Include="项目文件\大作业文档.docx">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="data.ini">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="大作业wow.rc">

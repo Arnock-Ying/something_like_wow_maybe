@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "faction.h"
 #include "GameManager.h"
 #include "nomelWarrior.h"
@@ -13,12 +14,13 @@ GameManager gameManager;
 
 int main()
 {
+	fstream fin("data.ini");
 	int N;
-	cin >> N;
+	fin >> N;
 	for (int itr = 0; itr < N; itr++)
 	{
-		cout << "Case " << itr+1 <<':' << endl;
-		gameManager.readNumFromScreen();
+		cout << "Case " << itr + 1 << ':' << endl;
+		gameManager.readNumFromScreen(fin);
 		gameManager.setMaxLoop(100);
 		gameManager.gameInit(GMM_NOTDRAW);
 		Headquarters* blueHeader = gameManager.Header(0);
